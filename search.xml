@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/11/20/hello-world/</url>
+    <content><![CDATA[<h1 id="欢迎来到我的博客"><a href="#欢迎来到我的博客" class="headerlink" title="欢迎来到我的博客"></a>欢迎来到我的博客</h1><p>在这广袤的思想与代码的宇宙中，我为自己开辟了一片小小的空间——一个逻辑与想象交织的角落，在这里，代码行与反思的文字共舞。我在此记录自己的旅程，一段充满探索、学习与意义追寻的旅程。每一篇文章都是一个碎片，是我思考的问题和尝试找到的答案的映射。</p>
+<p>这个博客不仅仅是技术笔记的集合或是个人随想的汇总，它是一个不断演变的叙事空间。数字世界的片段在这里与人类的体验相遇，拼成一个个充满好奇与领悟、成功与失误的马赛克。</p>
+<p>或许你也是一位同行者，漫步于逻辑与创意的领域，或许你只是好奇，寻找一些新奇的事物。无论是哪种情况，我希望这些思考能与你产生共鸣，希望你能在这些文字中找到激起兴趣的火花，哪怕只是一瞬。</p>
+<p>欢迎你，愿这段旅程对我们双方都充满启发。</p>
+<span id="more"></span>
+<hr>
+<h1 id="Welcome-to-My-Blog"><a href="#Welcome-to-My-Blog" class="headerlink" title="Welcome to My Blog"></a>Welcome to My Blog</h1><p>In this vast universe of thoughts and codes, I have carved out a small space for myself—a corner where logic and imagination intertwine, where lines of code dance alongside words of reflection. Here, I chronicle my journey, one marked by exploration, learning, and the pursuit of meaning. Each post is a fragment, a reflection of the questions I ponder and the answers I attempt to craft.</p>
+<p>This blog is not merely a collection of technical notes or personal musings; it is an evolving narrative. A place where fragments of the digital world meet human experience—a mosaic of both success and error, curiosity and realization.</p>
+<p>Perhaps you are a fellow traveler, wandering through the realms of logic and creativity, or perhaps you are simply curious, seeking something new. Whichever the case, I hope these thoughts resonate, that within these words you find something that sparks your interest, even if just a fleeting spark.</p>
+<p>Welcome, and may this journey be enlightening for us both.</p>
+]]></content>
+      <tags>
+        <tag>-介绍</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git学习笔记</title>
+    <url>/2024/11/21/git%20learning/</url>
+    <content><![CDATA[<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><ol>
+<li><a href="#%E5%9C%A8-vs-code-%E4%B8%AD%E4%BD%BF%E7%94%A8-git">在 VS Code 中使用 Git</a><ol>
+<li><a href="#%E9%AA%8C%E8%AF%81-git-%E5%AE%89%E8%A3%85">验证 Git 安装</a></li>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96-git-%E4%BB%93%E5%BA%93">初始化 Git 仓库</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81">查看文件状态</a></li>
+<li><a href="#%E8%BF%BD%E8%B8%AA%E6%96%B0%E6%96%87%E4%BB%B6">追踪新文件</a></li>
+<li><a href="#%E6%8F%90%E4%BA%A4%E6%9B%B4%E6%94%B9">提交更改</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2">查看提交历史</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2">修改提交历史</a></li>
+<li><a href="#%E6%81%A2%E5%A4%8D%E5%88%B0%E4%B9%8B%E5%89%8D%E7%9A%84%E6%8F%90%E4%BA%A4">恢复到之前的提交</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-gitignore-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6">使用 .gitignore 忽略文件</a></li>
+</ol>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-github">使用 GitHub</a><ol>
+<li><a href="#%E5%B0%86%E4%BB%A3%E7%A0%81%E6%8E%A8%E9%80%81%E5%88%B0-github">将代码推送到 GitHub</a></li>
+<li><a href="#%E4%BB%8E-github-%E6%8B%89%E5%8F%96%E6%9B%B4%E6%94%B9">从 GitHub 拉取更改</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E5%88%86%E6%94%AF">创建新分支</a></li>
+</ol>
+</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="在-VS-Code-中使用-Git"><a href="#在-VS-Code-中使用-Git" class="headerlink" title="在 VS Code 中使用 Git"></a>在 VS Code 中使用 Git</h2><ol>
+<li><strong>创建新文件夹</strong>：首先创建一个目录，用于存放你的项目文件。</li>
+<li><strong>在文件夹中创建文件</strong>：将必要的文件添加到目录中，例如源代码或文档。</li>
+</ol>
+<h3 id="验证-Git-安装"><a href="#验证-Git-安装" class="headerlink" title="验证 Git 安装"></a>验证 Git 安装</h3><p>在使用 Git 之前，确保它已正确安装，检查其版本：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git version</span><br></pre></td></tr></table></figure>
+<p>此命令将显示已安装的 Git 版本，如果系统中已安装 Git。</p>
+<h3 id="初始化-Git-仓库"><a href="#初始化-Git-仓库" class="headerlink" title="初始化 Git 仓库"></a>初始化 Git 仓库</h3><p>要开始跟踪项目文件夹中的更改，需要创建一个本地 Git 仓库：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>此命令将在项目文件夹中初始化一个新的 <code>.git</code> 目录，Git 将使用它来存储所有版本历史和元数据。</p>
+<h3 id="查看文件状态"><a href="#查看文件状态" class="headerlink" title="查看文件状态"></a>查看文件状态</h3><p>要查看文件相对于仓库的当前状态：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        how_to_use_vscode_with_github.md</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+<p>此输出表明 Git 检测到了一些新文件，但它们尚未被跟踪。未跟踪的文件是那些尚未添加到仓库版本控制中的文件。</p>
+<h3 id="追踪新文件"><a href="#追踪新文件" class="headerlink" title="追踪新文件"></a>追踪新文件</h3><p>要将文件从“未跟踪”状态移到“已跟踪”状态，使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add guide.md</span><br></pre></td></tr></table></figure>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   guide.md</span><br></pre></td></tr></table></figure>
+<p>文件 <code>guide.md</code> 现在已经暂存，这意味着它准备好被包含在下一个提交中。</p>
+<h3 id="提交更改"><a href="#提交更改" class="headerlink" title="提交更改"></a>提交更改</h3><p>要保存已暂存的更改，需要创建一个提交：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;关于更改的描述性消息&quot;</span></span><br></pre></td></tr></table></figure>
+<p><code>-m</code> 标志允许你包含一条描述更改的提交消息，以便更容易理解更改的历史。</p>
+<h3 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h3><p>可以使用以下命令查看仓库中所有提交的历史：</p>
+<ol>
+<li>查看详细的提交历史：<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+此命令显示每次提交的信息，包括提交 ID、作者、日期和提交消息。</li>
+</ol>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">commit 2f296dc9f7f1fa63b1acd406d3c61e182d0afcc3 (HEAD -&gt; master)</span><br><span class="line">Author: Yaemlt &lt;jcd474747@163.com&gt;</span><br><span class="line">Date:   Sun Nov 17 22:47:27 2024 +0800</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>查看简洁的提交历史：<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline</span><br></pre></td></tr></table></figure>
+此命令以更简洁的形式显示提交历史，仅显示提交 ID 和消息。</li>
+</ol>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2f296dc (HEAD -&gt; master) Initial commit with VSCode setup</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改提交历史"><a href="#修改提交历史" class="headerlink" title="修改提交历史"></a>修改提交历史</h3><p>要修改或删除特定的提交，可以使用 <code>git log --oneline</code> 命令查看提交 ID，然后执行后续操作，例如删除提交。</p>
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">50adb32 (HEAD -&gt; master) 删除了不必要的问号</span><br><span class="line">d4edec9 更新了查看提交历史的说明</span><br><span class="line">2f296dc Initial commit with VSCode setup</span><br></pre></td></tr></table></figure>
+
+<h3 id="恢复到之前的提交"><a href="#恢复到之前的提交" class="headerlink" title="恢复到之前的提交"></a>恢复到之前的提交</h3><p>如果需要将文件恢复到某次提交时的状态，使用：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout &lt;commit_id&gt; -- &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>要将整个仓库恢复到之前的状态并丢弃之后的所有更改，使用：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard &lt;commit_id&gt;</span><br></pre></td></tr></table></figure>
+<p>此命令将把仓库恢复到指定的提交，并删除所有之后的提交。</p>
+<h3 id="使用-gitignore-忽略文件"><a href="#使用-gitignore-忽略文件" class="headerlink" title="使用 .gitignore 忽略文件"></a>使用 <code>.gitignore</code> 忽略文件</h3><p>要指定 Git 不应跟踪哪些文件，可以在仓库根目录中创建 <code>.gitignore</code> 文件。添加要忽略的文件模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>例如，要忽略所有 <code>.log</code> 文件，添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.log</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-GitHub"><a href="#使用-GitHub" class="headerlink" title="使用 GitHub"></a>使用 GitHub</h2><h3 id="将代码推送到-GitHub"><a href="#将代码推送到-GitHub" class="headerlink" title="将代码推送到 GitHub"></a>将代码推送到 GitHub</h3><p>如果想在 GitHub 上共享本地仓库，首先将其连接到远程 Git 仓库：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git remote add origin https://github.com/username/repository.git</span><br><span class="line">git branch -M main</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>git remote add origin &lt;url&gt;</code>：添加一个新的远程仓库。</li>
+<li><code>git branch -M main</code>：将当前分支重命名为 <code>main</code>。</li>
+<li><code>git push -u origin main</code>：将本地仓库推送到 GitHub，并设置 <code>origin/main</code> 作为默认的上游分支。</li>
+</ul>
+<h3 id="从-GitHub-拉取更改"><a href="#从-GitHub-拉取更改" class="headerlink" title="从 GitHub 拉取更改"></a>从 GitHub 拉取更改</h3><p>要将本地仓库与远程仓库中的更改同步：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>此命令将从 GitHub 获取最新的更改并将它们合并到本地分支中。</p>
+<h3 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h3><p>要创建并切换到新分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout -b &lt;branchname&gt;</span><br></pre></td></tr></table></figure>
+<p>这对于为新功能或实验性更改创建单独的工作区而不影响主代码库非常有用。</p>
+]]></content>
+      <categories>
+        <category>-代码</category>
+      </categories>
+      <tags>
+        <tag>-语法 -工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux Shell 基础指南</title>
+    <url>/2024/11/22/Missing%20semester%20in%20cs%20learning/</url>
+    <content><![CDATA[<p>本指南旨在帮助初学者掌握一些常用的 Linux Shell 命令。通过这些命令，你可以更高效地管理文件、导航目录，以及自动化一些简单的任务。</p>
+<span id="more"></span>
+<h2 id="1-Shell-基本命令"><a href="#1-Shell-基本命令" class="headerlink" title="1. Shell 基本命令"></a>1. Shell 基本命令</h2><h3 id="date-显示当前日期和时间"><a href="#date-显示当前日期和时间" class="headerlink" title="date - 显示当前日期和时间"></a><code>date</code> - 显示当前日期和时间</h3><p><code>date</code> 命令用于显示当前系统的日期和时间，常用于查看当前时间。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">date</span></span><br></pre></td></tr></table></figure>
+
+<p>输出示例：<code>2024-11-22 15:45:30</code>，显示系统的日期和时间。</p>
+<h3 id="echo-输出一段文字"><a href="#echo-输出一段文字" class="headerlink" title="echo - 输出一段文字"></a><code>echo</code> - 输出一段文字</h3><p><code>echo</code> 用于在终端输出一段文字或变量值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello, World!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出示例：<code>Hello, World!</code>，打印出指定的字符串。</p>
+<p>还可以用于显示系统的环境变量，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>输出示例：显示系统路径变量，用于查找可执行程序的位置。</p>
+<h3 id="which-查找命令的位置"><a href="#which-查找命令的位置" class="headerlink" title="which - 查找命令的位置"></a><code>which</code> - 查找命令的位置</h3><p><code>which</code> 命令用于查找某个命令的可执行文件的位置，帮助你确认具体执行的是哪个命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">echo</span></span><br></pre></td></tr></table></figure>
+
+<p>输出示例：<code>/bin/echo</code>，表示 <code>echo</code> 命令的路径。</p>
+<h2 id="2-目录操作"><a href="#2-目录操作" class="headerlink" title="2. 目录操作"></a>2. 目录操作</h2><h3 id="pwd-显示当前所在目录"><a href="#pwd-显示当前所在目录" class="headerlink" title="pwd - 显示当前所在目录"></a><code>pwd</code> - 显示当前所在目录</h3><p><code>pwd</code> （Print Working Directory）用于显示你当前所在的目录路径。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<p>输出示例：<code>/home/user</code>，表示你当前的位置。</p>
+<h3 id="cd-切换目录"><a href="#cd-切换目录" class="headerlink" title="cd - 切换目录"></a><code>cd</code> - 切换目录</h3><p><code>cd</code> 命令用于在不同目录之间切换。</p>
+<ul>
+<li>进入指定目录：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/user/documents</span><br></pre></td></tr></table></figure>
+这会让你进入 <code>/home/user/documents</code> 目录。</li>
+<li>回到上一级目录：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+这会返回到上一级目录。</li>
+<li>返回主目录：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br></pre></td></tr></table></figure>
+这会直接返回主目录（用户主文件夹）。</li>
+<li>切换到之前的目录：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> -</span><br></pre></td></tr></table></figure>
+这会返回你上次所在的目录。</li>
+</ul>
+<h3 id="ls-列出文件和目录"><a href="#ls-列出文件和目录" class="headerlink" title="ls - 列出文件和目录"></a><code>ls</code> - 列出文件和目录</h3><p><code>ls</code> 命令用于查看当前目录中的文件和子目录。</p>
+<ul>
+<li>简单查看：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+这会列出当前目录下的所有文件和文件夹。</li>
+<li>查看详细信息：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l</span><br></pre></td></tr></table></figure>
+这会显示详细信息，比如权限、文件大小、修改时间等。</li>
+</ul>
+<h3 id="mkdir-创建新目录"><a href="#mkdir-创建新目录" class="headerlink" title="mkdir - 创建新目录"></a><code>mkdir</code> - 创建新目录</h3><p><code>mkdir</code> 用于创建一个新的文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> new_directory</span><br></pre></td></tr></table></figure>
+
+<p>这会在当前目录下创建一个名为 <code>new_directory</code> 的文件夹。</p>
+<h3 id="mv-移动或重命名文件"><a href="#mv-移动或重命名文件" class="headerlink" title="mv - 移动或重命名文件"></a><code>mv</code> - 移动或重命名文件</h3><p><code>mv</code> 用于移动文件或重命名文件。</p>
+<ul>
+<li>重命名文件：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> oldname.txt newname.txt</span><br></pre></td></tr></table></figure>
+这会将 <code>oldname.txt</code> 重命名为 <code>newname.txt</code>。</li>
+<li>移动文件到其他目录：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> /path/to/source /path/to/destination</span><br></pre></td></tr></table></figure>
+这会将指定文件移动到目标目录。</li>
+</ul>
+<h3 id="cp-复制文件"><a href="#cp-复制文件" class="headerlink" title="cp - 复制文件"></a><code>cp</code> - 复制文件</h3><p><code>cp</code> 用于复制文件到新的位置。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> source.txt destination.txt</span><br></pre></td></tr></table></figure>
+
+<p>这会将 <code>source.txt</code> 复制到 <code>destination.txt</code>，保留源文件不变。</p>
+<h2 id="3-手册页"><a href="#3-手册页" class="headerlink" title="3. 手册页"></a>3. 手册页</h2><h3 id="man-查看命令的使用手册"><a href="#man-查看命令的使用手册" class="headerlink" title="man - 查看命令的使用手册"></a><code>man</code> - 查看命令的使用手册</h3><p><code>man</code> 命令用于查看某个命令的详细说明和使用方法。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">man <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p>这会打开 <code>ls</code> 命令的手册，里面包含了命令的用法、选项和示例。</p>
+<h2 id="4-数据流重定向"><a href="#4-数据流重定向" class="headerlink" title="4. 数据流重定向"></a>4. 数据流重定向</h2><h3 id="输入和输出重定向"><a href="#输入和输出重定向" class="headerlink" title="输入和输出重定向"></a>输入和输出重定向</h3><ul>
+<li><code>&gt;</code> 将输出重定向到文件，覆盖原有内容：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello&quot;</span> &gt; file.txt</span><br></pre></td></tr></table></figure>
+这会将 <code>hello</code> 写入到 <code>file.txt</code> 中，如果文件已经存在，则覆盖内容。</li>
+<li><code>&gt;&gt;</code> 将输出追加到文件末尾：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;world&quot;</span> &gt;&gt; file.txt</span><br></pre></td></tr></table></figure>
+这会将 <code>world</code> 追加到 <code>file.txt</code> 的末尾，不会覆盖已有内容。</li>
+<li><code>&lt;</code> 用于从文件中读取输入：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sort</span> &lt; file.txt</span><br></pre></td></tr></table></figure>
+这会对 <code>file.txt</code> 中的内容进行排序并显示。</li>
+</ul>
+<h2 id="5-管道-将一个命令的输出作为另一个命令的输入"><a href="#5-管道-将一个命令的输出作为另一个命令的输入" class="headerlink" title="5. 管道 | - 将一个命令的输出作为另一个命令的输入"></a>5. 管道 <code>|</code> - 将一个命令的输出作为另一个命令的输入</h2><p>管道符号 <code>|</code> 用于将一个命令的输出直接传递给下一个命令作为输入。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l /some_directory | <span class="built_in">tail</span> -n 5</span><br></pre></td></tr></table></figure>
+
+<p>这会列出 <code>/some_directory</code> 中的文件，并仅显示最后 5 行。</p>
+<h2 id="6-tail-查看文件末尾内容"><a href="#6-tail-查看文件末尾内容" class="headerlink" title="6. tail - 查看文件末尾内容"></a>6. <code>tail</code> - 查看文件末尾内容</h2><p><code>tail</code> 命令用于查看文件的最后几行，常用于查看日志文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> -n 10 logfile.txt</span><br></pre></td></tr></table></figure>
+
+<p>这会显示 <code>logfile.txt</code> 的最后 10 行内容。</p>
+<p>这些基本命令可以帮助你在 Linux 系统中更高效地管理文件、导航目录以及自动化一些简单的任务。</p>
+]]></content>
+      <categories>
+        <category>-代码</category>
+      </categories>
+      <tags>
+        <tag>-语法 -工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown 简单介绍</title>
+    <url>/2024/11/22/markdown%20learning/</url>
+    <content><![CDATA[<p>Markdown 是一种轻量级的标记语言，用于快速生成格式化的文本。</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><ul>
+<li><strong>一级标题</strong>：使用 <code>#</code> 加上空格。例如：<code># 一级标题</code></li>
+<li><strong>二级标题</strong>：使用 <code>##</code> 加上空格。例如：<code>## 二级标题</code></li>
+<li><strong>三级标题</strong>：使用 <code>###</code> 加上空格。例如：<code>### 三级标题</code></li>
+</ul>
+<span id="more"></span>
+<h2 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h2><ul>
+<li><strong>加粗</strong>：使用两个星号包围内容，例如：<code>**内容**</code> 变为 <strong>内容</strong>。</li>
+<li><strong>斜体</strong>：使用一个星号包围内容，例如：<code>*内容*</code> 变为 <em>内容</em>。</li>
+<li><strong>加粗斜体</strong>：使用三个星号包围内容，例如：<code>***内容***</code> 变为 <em><strong>内容</strong></em>。</li>
+<li><strong>删除线</strong>：使用两个波浪线包围内容，例如：<code>~~内容~~</code> 变为 <del>内容</del>。</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><ul>
+<li><p><strong>内联代码</strong>：使用反引号包围代码片段，例如：<code>`代码内容`</code>。</p>
+</li>
+<li><p><strong>多行代码块</strong>：使用三个反引号包围代码，并指定语言类型来获得代码高亮：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;helloworld!\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ul>
+<li><p><strong>有序列表</strong>：数字后加空格。例如：</p>
+<ol>
+<li>第一点</li>
+<li>第二点</li>
+<li>第三点</li>
+</ol>
+</li>
+<li><p><strong>无序列表</strong>：星号后加空格。例如：</p>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ul>
+</li>
+<li><p><strong>嵌套列表</strong>：在列表项下方缩进来创建嵌套列表。例如：</p>
+<ul>
+<li>第一项<ul>
+<li>子项 1</li>
+<li>子项 2</li>
+</ul>
+</li>
+<li>第二项</li>
+</ul>
+</li>
+</ul>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>使用三个或更多个连字符 <code>---</code> 来创建分割线：</p>
+<hr>
+<h2 id="链接与图片"><a href="#链接与图片" class="headerlink" title="链接与图片"></a>链接与图片</h2><ul>
+<li><p><strong>链接</strong>：使用尖括号包围 URL。例如：<code>&lt;https://www.cnblogs.com/nickchen121/p/10718112.html&gt;</code></p>
+</li>
+<li><p><strong>链接文本</strong>：使用 <code>[链接文本](URL)</code> 语法来创建带有描述的链接。例如：<code>[点击这里](https://www.example.com)</code>。</p>
+</li>
+<li><p><strong>图片</strong>：使用 <code>![]()</code> 语法来插入图片。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![图片描述](https://prod-files-secure.s3.us-west-2.amazonaws.com/fa4816c7-b7f1-4d55-a480-129ffb609607/0c1efe77-6286-4041-b4f0-b04d5e684530/Untitled.png)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>使用 <code>&gt;</code> 来创建引用块。例如：</p>
+<blockquote>
+<p>这是一个引用内容。</p>
+</blockquote>
+<h2 id="提示与高亮"><a href="#提示与高亮" class="headerlink" title="提示与高亮"></a>提示与高亮</h2><ul>
+<li>使用 <code>&lt;aside&gt;</code> 标签可以创建提示。例如：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">💡 这是一个提示信息！</span><br><span class="line"><span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>使用竖线 <code>|</code> 来创建表格，并使用连字符 <code>-</code> 来分隔表头和内容。例如：</p>
+<table>
+<thead>
+<tr>
+<th>标题1</th>
+<th>标题2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容1</td>
+<td>内容2</td>
+</tr>
+<tr>
+<td>内容3</td>
+<td>内容4</td>
+</tr>
+</tbody></table>
+<h2 id="任务列表"><a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h2><p>使用 <code>- [ ]</code> 或 <code>- [x]</code> 创建任务列表。例如：</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 已完成的任务</li>
+<li><input disabled="" type="checkbox"> 待完成的任务</li>
+</ul>
+<h2 id="HTML-支持"><a href="#HTML-支持" class="headerlink" title="HTML 支持"></a>HTML 支持</h2><p>Markdown 中可以直接嵌入 HTML 代码。例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;color: red;&quot;</span>&gt;</span>这是一个红色的文本。<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在文件内创建索引"><a href="#在文件内创建索引" class="headerlink" title="在文件内创建索引"></a>在文件内创建索引</h2><p>Markdown 中可以使用链接的形式在文件内创建索引，以便快速跳转到特定部分。首先，为标题添加锚点，然后通过链接进行引用。</p>
+<ul>
+<li><p><strong>创建锚点</strong>：在标题前使用 <code>id</code> 属性。例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;section1&quot;</span>&gt;</span>第一部分<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建索引链接</strong>：使用 <code>#锚点名称</code> 来链接到对应的部分。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[跳转到第一部分](#section1)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这样可以在较长的 Markdown 文档中轻松创建目录或跳转链接。</p>
+<hr>
+<p>以上就是 Markdown 的一些基础语法介绍，希望对你有所帮助！</p>
+]]></content>
+      <categories>
+        <category>-代码</category>
+      </categories>
+      <tags>
+        <tag>-语法 -工具</tag>
+      </tags>
+  </entry>
+</search>
