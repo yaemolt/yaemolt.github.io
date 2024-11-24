@@ -198,7 +198,7 @@
 <p>这些基本命令可以帮助你在 Linux 系统中更高效地管理文件、导航目录以及自动化一些简单的任务。</p>
 ]]></content>
       <categories>
-        <category>-代码</category>
+        <category>-Missing semester learning</category>
       </categories>
       <tags>
         <tag>-语法 -工具</tag>
@@ -308,6 +308,103 @@
 ]]></content>
       <categories>
         <category>-代码</category>
+      </categories>
+      <tags>
+        <tag>-语法 -工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bash 脚本学习笔记</title>
+    <url>/2024/11/24/bashlearn/</url>
+    <content><![CDATA[<h2 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">foo=bar</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$foo</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 这段代码将值 <code>bar</code> 赋给变量 <code>foo</code>。<code>echo $foo</code> 命令打印变量 <code>foo</code> 的值。<code>$</code> 符号用于引用变量的值。</p>
+<p><strong>输出</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bar</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用字符串"><a href="#2-使用字符串" class="headerlink" title="2. 使用字符串"></a>2. 使用字符串</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;World&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>echo</code> 命令将给定的字符串打印到终端。双引号（<code>&quot;</code>）和单引号（<code>&#39;</code>）都可以用来定义字符串，但它们在处理变量时的行为不同。</p>
+<p><strong>输出</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Hello</span><br><span class="line">World</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;value is <span class="variable">$foo</span>&quot;</span></span><br><span class="line"><span class="string">&#x27;value is $foo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 使用双引号时，变量会被展开。因此，<code>&quot;value is $foo&quot;</code> 会打印 <code>value is bar</code>，因为 <code>$foo</code> 被替换为其值 (<code>bar</code>)。而使用单引号（<code>&#39;value is $foo&#39;</code>）时，文本会被按字面量处理，所以 <code>$foo</code> 保持不变。</p>
+<p><strong>输出</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">value is bar</span><br><span class="line">value is <span class="variable">$foo</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-定义和使用函数"><a href="#3-定义和使用函数" class="headerlink" title="3. 定义和使用函数"></a>3. 定义和使用函数</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim mcd.sh</span><br><span class="line"><span class="comment"># 在文件中</span></span><br><span class="line"><span class="function"><span class="title">mcd</span></span> () &#123;</span><br><span class="line">    <span class="built_in">mkdir</span> -p <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 按 `esc :wq` 保存并退出</span></span><br><span class="line"><span class="built_in">source</span> mcd.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该代码段定义了一个名为 <code>mcd</code> 的函数。该函数创建一个新目录（<code>mkdir -p &quot;$1&quot;</code>），然后进入该目录（<code>cd &quot;$1&quot;</code>）。<code>$1</code> 代表传递给函数的第一个参数。保存脚本（<code>mcd.sh</code>）后，使用 <code>source mcd.sh</code> 将函数加载到当前 shell 环境中，从而可以使用它。</p>
+<h2 id="4-特殊变量和关键字"><a href="#4-特殊变量和关键字" class="headerlink" title="4. 特殊变量和关键字"></a>4. 特殊变量和关键字</h2><ul>
+<li><code>$1, $2, ..., $9</code>: 表示传递给脚本或函数的第一个、第二个到第九个参数。</li>
+<li><code>$0</code>: 脚本本身的名称。</li>
+<li><code>$?</code>: 上一个命令的退出状态。值为 <code>0</code> 表示成功，其他值表示错误。</li>
+<li><code>$_</code>: 上一个命令的最后一个参数。</li>
+<li><code>!!</code>: 重复上一个命令。</li>
+<li><code>$#</code>: 传递给脚本或命令的参数数量。</li>
+<li><code>$$</code>: 当前 shell 的进程 ID (PID)。</li>
+<li><code>$@</code>: 传递给脚本的所有参数。</li>
+</ul>
+<p><strong>解释</strong>: 这些特殊变量对于脚本编写和自动化非常有用，使你能够有效地处理参数和控制流程。</p>
+<h2 id="5-获取命令的结果"><a href="#5-获取命令的结果" class="headerlink" title="5. 获取命令的结果"></a>5. 获取命令的结果</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">foo=$(<span class="built_in">pwd</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该行将 <code>pwd</code> 命令的输出（打印当前工作目录）赋给变量 <code>foo</code>。<code>$()</code> 语法用于命令替换。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;we are in <span class="subst">$(pwd)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该命令在字符串中直接打印当前的工作目录。<code>$(pwd)</code> 会被替换为 <code>pwd</code> 命令的结果。</p>
+<h2 id="6-控制流和条件语句"><a href="#6-控制流和条件语句" class="headerlink" title="6. 控制流和条件语句"></a>6. 控制流和条件语句</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [[ -f <span class="string">&quot;<span class="variable">$1</span>&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;文件存在&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;文件不存在&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该代码段使用 <code>if</code> 条件语句来检查参数 <code>$1</code> 是否是文件。<code>[[ -f &quot;$1&quot; ]]</code> 检查文件是否存在。如果存在，则打印 “文件存在”；否则打印 “文件不存在”。在 Bash 中，使用 <code>[[ ]]</code> 进行条件判断比使用 <code>[ ]</code> 更安全。</p>
+<h2 id="7-使用逻辑操作符"><a href="#7-使用逻辑操作符" class="headerlink" title="7. 使用逻辑操作符"></a>7. 使用逻辑操作符</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="literal">true</span> || <span class="built_in">echo</span> <span class="string">&quot;Oops, fail&quot;</span></span><br><span class="line"><span class="literal">true</span> &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;Things went well&quot;</span></span><br><span class="line"><span class="literal">false</span> &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;Will not be printed&quot;</span></span><br><span class="line"><span class="literal">false</span> ; <span class="built_in">echo</span> <span class="string">&quot;This will always run&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>||</code> 和 <code>&amp;&amp;</code> 分别用于逻辑或和逻辑与操作符。只有当 <code>true</code> 返回非零退出码时，<code>true ||</code> 后面的命令才会执行，而 <code>true &amp;&amp;</code> 后面的命令会在 <code>true</code> 返回 <code>0</code> 时执行。<code>;</code> 用于分隔多个命令，确保后一个命令无论前一个命令是否成功都会执行。</p>
+<h2 id="8-命令替换和进程替换"><a href="#8-命令替换和进程替换" class="headerlink" title="8. 命令替换和进程替换"></a>8. 命令替换和进程替换</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">foo=$(<span class="built_in">ls</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>$(ls)</code> 运行 <code>ls</code> 命令并将其输出赋值给变量 <code>foo</code>，这称为命令替换。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">diff &lt;(<span class="built_in">ls</span> foo) &lt;(<span class="built_in">ls</span> bar)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 这使用了进程替换。<code>&lt;(ls foo)</code> 运行 <code>ls foo</code> 并将结果输出到一个临时文件，<code>diff</code> 然后使用该文件来比较 <code>foo</code> 和 <code>bar</code> 目录中的内容。</p>
+<h2 id="9-通配符和花括号扩展"><a href="#9-通配符和花括号扩展" class="headerlink" title="9. 通配符和花括号扩展"></a>9. 通配符和花括号扩展</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> foo?</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>?</code> 通配符匹配任意单个字符。<code>rm foo?</code> 会删除所有名为 <code>foo</code> 后面带一个字符的文件，例如 <code>foo1</code> 或 <code>foo2</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> /path/to/project/&#123;foo,bar,baz&#125;.sh /newpath</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 花括号 <code>&#123;&#125;</code> 用于简化重复任务。该 <code>cp</code> 命令会将 <code>foo.sh</code>、<code>bar.sh</code> 和 <code>baz.sh</code> 复制到 <code>/newpath</code>。</p>
+<h2 id="10-调试"><a href="#10-调试" class="headerlink" title="10. 调试"></a>10. 调试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> -x</span><br><span class="line"><span class="comment"># 脚本内容</span></span><br><span class="line"><span class="built_in">set</span> +x</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>set -x</code> 启用调试模式，打印每个命令在执行前的内容。<code>set +x</code> 禁用调试模式。这对于定位脚本中的错误非常有用。</p>
+<h2 id="11-查找文件"><a href="#11-查找文件" class="headerlink" title="11. 查找文件"></a>11. 查找文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -name &lt;filename&gt; -<span class="built_in">type</span> &lt;<span class="built_in">type</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>find</code> 命令用于搜索文件和目录。<code>-name</code> 选项指定要查找的文件名，<code>-type</code> 指定类型（<code>f</code> 表示文件，<code>d</code> 表示目录）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -mtime -1</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该命令查找所有在过去一天内修改的文件。<code>-mtime -1</code> 表示修改时间小于一天的文件。</p>
+<h2 id="12-删除所有匹配的文件"><a href="#12-删除所有匹配的文件" class="headerlink" title="12. 删除所有匹配的文件"></a>12. 删除所有匹配的文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -name <span class="string">&quot;*.tmp&quot;</span> -<span class="built_in">exec</span> <span class="built_in">rm</span> &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该命令查找所有扩展名为 <code>.tmp</code> 的文件并将其删除。<code>-exec</code> 选项允许对找到的每个文件执行一个命令（<code>rm</code>）。<code>&#123;&#125;</code> 被替换为文件名，<code>\;</code> 标志命令的结束。</p>
+<h2 id="13-简单文件搜索"><a href="#13-简单文件搜索" class="headerlink" title="13. 简单文件搜索"></a>13. 简单文件搜索</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fd <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>fd</code> 是 <code>find</code> 的一个更简单和更快的替代品。此命令会列出当前目录及其子目录中的所有文件。</p>
+<h2 id="14-高级文件搜索"><a href="#14-高级文件搜索" class="headerlink" title="14. 高级文件搜索"></a>14. 高级文件搜索</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">locate &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>locate</code> 使用预构建的索引按名称查找文件，这使得它在进行广泛搜索时比 <code>find</code> 更快。</p>
+<h2 id="15-查找命令历史"><a href="#15-查找命令历史" class="headerlink" title="15. 查找命令历史"></a>15. 查找命令历史</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">history</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该命令列出你在当前终端会话中运行过的所有命令，这对于回忆或重复过去的命令非常有用。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">history</span> | grep find</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该命令使用管道将 <code>history</code> 的输出传递给 <code>grep</code>，允许你在命令历史中搜索包含 <code>find</code> 的条目。</p>
+<h2 id="16-以树形结构列出文件和文件夹"><a href="#16-以树形结构列出文件和文件夹" class="headerlink" title="16. 以树形结构列出文件和文件夹"></a>16. 以树形结构列出文件和文件夹</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tree</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: <code>tree</code> 命令以树状格式显示当前目录的目录结构，使你更容易可视化文件和目录的层次结构。</p>
+<h2 id="17-处理输入参数的脚本示例"><a href="#17-处理输入参数的脚本示例" class="headerlink" title="17. 处理输入参数的脚本示例"></a>17. 处理输入参数的脚本示例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Starting program at <span class="subst">$(date)</span>&quot;</span> <span class="comment"># date 会被替换为当前日期和时间</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="string">&quot;<span class="variable">$file</span>&quot;</span> &gt; /dev/null 2&gt; /dev/null</span><br><span class="line">    <span class="comment"># 如果模式没有找到，grep 的退出状态为 1</span></span><br><span class="line">    <span class="comment"># 我们将标准输出和标准错误重定向到 null，因为我们不关心这些输出</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;File <span class="variable">$file</span> does not have any foobar, adding one&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;# foobar&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解释</strong>: 该脚本遍历传递的所有参数，并使用 <code>grep</code> 搜索字符串 <code>foobar</code>。如果未找到，脚本会将 <code># foobar</code> 作为注释追加到文件中。<code>$?</code> 用于检查上一条命令（即 <code>grep</code>）是否成功，方法是检查其退出状态是否为 <code>0</code>。</p>
+]]></content>
+      <categories>
+        <category>-Missing semester learning</category>
       </categories>
       <tags>
         <tag>-语法 -工具</tag>
